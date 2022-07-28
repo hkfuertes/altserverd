@@ -1,0 +1,11 @@
+version: '3'
+services:
+  netmuxd:
+     build: netmuxd
+     volumes: 
+      - .:/build
+  anisette:
+    build: ./provision
+    restart: unless-stopped
+    ports:
+      - "6969:6969"

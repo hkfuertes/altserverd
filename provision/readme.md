@@ -1,3 +1,9 @@
+## Build & run
+```bash
+docker build -t anisette provision/
+docker run -p 6969:6969 anisette
+```
+
 ## How to extract lib folder
 Steps:
 - Download: https://www.apkmirror.com/apk/apple/apple-music/apple-music-3-10-1-release/apple-music-3-10-1-android-apk-download/

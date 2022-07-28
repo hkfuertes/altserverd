@@ -1,5 +1,6 @@
 #!/bin/bash
 
-cargo build
-
-cp target/debug/netmuxd /build/
+if [ ! -f /build/netmuxd ]
+    cargo build
+    cp target/debug/netmuxd /build/
+fi
