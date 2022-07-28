@@ -2,4 +2,4 @@
 
 cargo build
 
-cp target/debug/netmuxd /build
+cp target/debug/netmuxd /build/
