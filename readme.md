@@ -3,7 +3,7 @@ Steps:
 - Compile netmuxd:
   ```bash
   docker build -t netmuxd netmuxd/
-  docker run -v netmuxd:/build netmuxd
+  docker run -v `pwd`/netmuxd:/build netmuxd
   ```
 
 - Compile & run anisette:
