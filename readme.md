@@ -3,7 +3,7 @@ Steps:
 - Compile netmuxd:
   ```bash
   docker build -t netmuxd netmuxd/
-  docker run -v `pwd`:/build netmuxd
+  docker run -v netmuxd:/build netmuxd
   ```
   - Executable can be found: `/app/target/debug`
 - Compile & run anisette:
