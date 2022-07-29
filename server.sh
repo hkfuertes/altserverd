@@ -2,6 +2,8 @@
 # Author of the script : powen
 # Edited by: hkfuertes
 
+CP = `pwd`
+
 # Check source and permission
 cd "$(dirname "$0")" || exit
 echo "Checking source"
@@ -19,6 +21,9 @@ if [[ "stat AltServer | grep -- '-rw-r--r--'" != "" ]] ; then
 fi
 if [[ "stat netmuxd | grep -- '-rw-r--r--'" != "" ]] ; then
     sudo chmod +x netmuxd
+fi
+if [[ ! -e "AltServer.service" ]] ; then
+    sed 's@<path>@'"$PWD"'@' AltServer.service.dist > AltServer.service
 fi
 
 sudo -b -S ./netmuxd
