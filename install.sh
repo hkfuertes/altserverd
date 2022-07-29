@@ -42,4 +42,7 @@ if [[ ! -e "netmuxd.service" ]] ; then
     echo
 fi
 
+# sudo ln -s `pwd`/AltServer.service /lib/systemd/system/AltServer.service
+# sudo ln -s `pwd`/netmuxd.service /lib/systemd/system/netmuxd.service 
+
 echo "[i] All Tasks done!"
