@@ -24,6 +24,7 @@ if [[ "stat netmuxd | grep -- '-rw-r--r--'" != "" ]] ; then
 fi
 if [[ ! -e "AltServer.service" ]] ; then
     sed 's@<path>@'"$PWD"'@' AltServer.service.dist > AltServer.service
+    echo "Service created, link it to systemd to enable|start|stop it!"
 fi
 
 sudo -b -S ./netmuxd
