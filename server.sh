@@ -11,19 +11,18 @@ fi
 if [[ ! -e "netmuxd" ]]; then
     docker-compose up netmuxd
 fi
-if [[ ! -e "altserver" ]]; then
-    curl -L https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.5/AltServer-`arch` > altserver
+if [[ ! -e "Altserver" ]]; then
+    curl -L https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.5/AltServer-`arch` > Altserver
 fi
-if [[ "stat altServer | grep -- '-rw-r--r--'" != "" ]] ; then
-    chmod +x altServer
+if [[ "stat AltServer | grep -- '-rw-r--r--'" != "" ]] ; then
+    chmod +x AltServer
 fi
 if [[ "stat netmuxd | grep -- '-rw-r--r--'" != "" ]] ; then
-    chmod +x netmuxd
+    sudo chmod +x netmuxd
 fi
 
 sudo -b -S ./netmuxd
 ./AltServer &> /dev/null &
-
 
 trap exit INT
 
@@ -37,4 +36,3 @@ exit()
 }
 
 echo "Running Altserver & netmuxd"
-tail -f /dev/null & wait
