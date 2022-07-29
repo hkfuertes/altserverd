@@ -19,6 +19,6 @@ There is a project that already does this exact same thing using a convenience s
 If you just want to run it serverless, use the following script modified from powenn's. This will create 2 service files that can be enabled in systemd
 
 ```bash
-git clone https://github.com/hkfuertes/alt-server-docker-wifi .
+git clone https://github.com/hkfuertes/alt-server-wifi .
 sudo ./install.s
 ```
