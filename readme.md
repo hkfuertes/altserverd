@@ -12,6 +12,12 @@ There is a project that already does this exact same thing using a convenience s
 - Download the [package](https://github.com/powenn/AltServer-Linux-ShellScript/releases) and extract it.
 - Build `netmuxd`: `docker-compose up netmuxd`
 - Copy [x64-run.sh](https://raw.githubusercontent.com/powenn/AltServer-Linux-ShellScript/main/x64-run.sh) onto the extracted folder.
-  - Alternatively copy `runtime/start.sh`
 - Copy built `netmuxd` onto extracted folder.
-- Run `x64-run.sh` or `start.sh`
+- Run `x64-run.sh`
+
+### Using convenience script
+If you just want to run it serverless, use the following script modified from powenn's.
+
+```bash
+./server.sh
+```
