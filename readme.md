@@ -20,5 +20,5 @@ If you just want to run it serverless, use the following script modified from po
 
 ```bash
 git clone https://github.com/hkfuertes/alt-server-wifi .
-sudo ./install.s
+./install.sh
 ```
