@@ -2,3 +2,4 @@ netmuxd
 *.ipa
 Altserver
 AltServer.service
+netmuxd.service

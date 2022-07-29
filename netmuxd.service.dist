@@ -1,8 +1,8 @@
 [Unit]
-Description=AltServer
+Description=netmuxd
 
 [Service]
-ExecStart=<path>/AltServer
+ExecStart=<path>/netmuxd
 
 [Install]
 WantedBy=multi-user.target
