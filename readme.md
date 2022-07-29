@@ -1,10 +1,17 @@
-# AltServer Docker (Wifi)
-Steps:
+## AltServer Wifi (with Docker)
+The idea of this project was to create a docker container with everything needed for a wifi refresh altserver instalacion platform independant. To do so, some important tools are built via docker for the platform that this repo will be running from.
+
+To run the refresh via wifi, `netmuxd` need to be present and built for the specific platform. In this case a `docker-compose` file is provided to ease this task.
 - Build netmuxd: `docker-compose up netmuxd`
+
+Aditionally, if a custom anisette server is needed to be run, there is another convenience service in the `docker-compose` that will build and run an anisette server on port `6969`
 - Build & run anisette: `docker-compose up anisette`
 
-## Using ShellScript
-- Download the package from: https://github.com/powenn/AltServer-Linux-ShellScript
-- Build netmuxd
-- Copy `runtime/start.sh` and `netmuxd` to extracted folder from first step.
-- Run `start.sh`
+### Using powenn/AltServer-Linux-ShellScript
+There is a project that already does this exact same thing using a convenience script, but as `netmuxd` is not built by default for all the platforms, its script only supports wifi refresh for `x86_64`. As we provide a way to build for you specific platform, we could run the `x86_64` version of their script on our instalation to achieve wifi refresh, to do so:
+- Download the [package](https://github.com/powenn/AltServer-Linux-ShellScript/releases) and extract it.
+- Build `netmuxd`: `docker-compose up netmuxd`
+- Copy [x64-run.sh](https://raw.githubusercontent.com/powenn/AltServer-Linux-ShellScript/main/x64-run.sh) onto the extracted folder.
+  - Alternatively copy `runtime/start.sh`
+- Copy built `netmuxd` onto extracted folder.
+- Run `x64-run.sh` or `start.sh`
