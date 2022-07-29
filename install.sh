@@ -2,7 +2,7 @@
 # Author of the script : powen
 # Edited by: hkfuertes
 
-CP = `pwd`
+sudo echo "Superused cached!"
 
 # Check source and permission
 cd "$(dirname "$0")" || exit
@@ -14,7 +14,7 @@ if [[ ! -e "netmuxd" ]]; then
     docker-compose up netmuxd
 fi
 if [[ ! -e "Altserver" ]]; then
-    curl -L https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.5/AltServer-`arch` > Altserver
+    curl -L https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.5/AltServer-`arch` > AltServer
 fi
 if [[ "stat AltServer | grep -- '-rw-r--r--'" != "" ]] ; then
     chmod +x AltServer

@@ -15,9 +15,10 @@ There is a project that already does this exact same thing using a convenience s
 - Copy built `netmuxd` onto extracted folder.
 - Run `x64-run.sh`
 
-### Using convenience script
-If you just want to run it serverless, use the following script modified from powenn's.
+### Using systemd
+If you just want to run it serverless, use the following script modified from powenn's. This will create 2 service files that can be enabled in systemd
 
 ```bash
-./server.sh
+git clone https://github.com/hkfuertes/alt-server-docker-wifi .
+sudo ./install.s
 ```
