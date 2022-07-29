@@ -9,16 +9,13 @@ if [[ ! -e "AltStore.ipa" ]]; then
     curl -L https://cdn.altstore.io/file/altstore/apps/altstore/1_4_9.ipa > AltStore.ipa
 fi
 if [[ ! -e "netmuxd" ]]; then
-    #curl -L https://github.com/jkcoxson/netmuxd/releases/download/v0.1.2/netmuxd-x86_64 > netmuxd
+    docker-compose up netmuxd
 fi
 if [[ ! -e "altserver" ]]; then
-    curl -L https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.5/AltServer-`uname -r` > altserver
+    curl -L https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.5/AltServer-`arch` > altserver
 fi
-if [[ "stat main | grep -- '-rw-r--r--'" != "" ]] ; then
-    chmod +x main
-fi
-if [[ "stat AltServer | grep -- '-rw-r--r--'" != "" ]] ; then
-    chmod +x AltServer
+if [[ "stat altServer | grep -- '-rw-r--r--'" != "" ]] ; then
+    chmod +x altServer
 fi
 if [[ "stat netmuxd | grep -- '-rw-r--r--'" != "" ]] ; then
     chmod +x netmuxd
@@ -38,3 +35,6 @@ exit()
   sudo killall netmuxd
   exit
 }
+
+echo "Running Altserver & netmuxd"
+tail -f /dev/null & wait
