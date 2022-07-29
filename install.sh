@@ -2,19 +2,25 @@
 # Author of the script : powen
 # Edited by: hkfuertes
 
-sudo echo "Superused cached!"
+sudo echo "[i] Superused cached!"
 
 # Check source and permission
 cd "$(dirname "$0")" || exit
-echo "Checking source"
+echo "[i] Checking source"
 if [[ ! -e "AltStore.ipa" ]]; then
-    curl -L https://cdn.altstore.io/file/altstore/apps/altstore/1_4_9.ipa > AltStore.ipa
+    echo "[i] Downloading AltStore.ipa"
+    curl -# -L https://cdn.altstore.io/file/altstore/apps/altstore/1_4_9.ipa > AltStore.ipa
+    echo "[i] AltStore.ipa Downloaded!"
 fi
 if [[ ! -e "netmuxd" ]]; then
-    docker-compose up netmuxd
+    echo "[i] Building netmuxd"
+    docker-compose up -d netmuxd
+    echo "[i] netmuxd built!"
 fi
 if [[ ! -e "Altserver" ]]; then
-    curl -L https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.5/AltServer-`arch` > AltServer
+    echo "[i] Downloading AltServer"
+    curl -# -L https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.5/AltServer-`arch` > AltServer
+    echo "[i] AltServer Downloaded!"
 fi
 if [[ "stat AltServer | grep -- '-rw-r--r--'" != "" ]] ; then
     chmod +x AltServer
@@ -24,9 +30,9 @@ if [[ "stat netmuxd | grep -- '-rw-r--r--'" != "" ]] ; then
 fi
 if [[ ! -e "AltServer.service" ]] ; then
     sed 's@<path>@'"$PWD"'@' AltServer.service.dist > AltServer.service
-    echo "Altserver service file created, link it to systemd to enable|start|stop it!"
+    echo "[i] Altserver service file created, link it to systemd to enable|start|stop it!"
 fi
 if [[ ! -e "netmuxd.service" ]] ; then
     sed 's@<path>@'"$PWD"'@' netmuxd.service.dist > netmuxd.service
-    echo "netmux service file created, link it to systemd to enable|start|stop it!"
+    echo "[i] netmux service file created, link it to systemd to enable|start|stop it!"
 fi
