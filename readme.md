@@ -19,6 +19,10 @@ There is a project that already does this exact same thing using a convenience s
 If you just want to run it serverless, use the following script modified from powenn's. This will create 2 service files that can be enabled in systemd
 
 ```bash
+# Install dependencies (Asuming RaspberryPi OS)
+sudo apt install -y libavahi-compat-libdnssd-dev usbmuxd
+# Clone this repo
 git clone https://github.com/hkfuertes/alt-server-wifi .
+# Run install script
 ./install.sh
 ```
