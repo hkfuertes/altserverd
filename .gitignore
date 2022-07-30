@@ -1,5 +1,1 @@
-netmuxd
-*.ipa
-AltServer.service
-netmuxd.service
-AltServer
+bin/*

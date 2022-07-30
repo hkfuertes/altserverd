@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.netmuxd
      command: sh -c "cargo build && cp target/debug/netmuxd /build/"
      volumes: 
-      - .:/build
+      - ./bin:/build
   anisette:
     build: ./provision
     restart: unless-stopped

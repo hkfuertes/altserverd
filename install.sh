@@ -13,36 +13,36 @@ if [[ ! -e "AltStore.ipa" ]]; then
     echo "[i] AltStore.ipa Downloaded!"
     echo
 fi
-if [[ ! -e "netmuxd" ]]; then
+if [[ ! -e "bin/netmuxd" ]]; then
     echo "[i] Building netmuxd"
     docker-compose up netmuxd
     echo "[i] netmuxd built!"
     echo
 fi
-if [[ ! -e "AltServer" ]]; then
+if [[ ! -e "bin/AltServer" ]]; then
     echo "[i] Downloading AltServer"
-    curl -# -L https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.5/AltServer-`arch` > AltServer
+    curl -# -L https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.5/AltServer-`arch` > ./bin/AltServer
     echo "[i] AltServer Downloaded!"
     echo
 fi
-if [[ "stat AltServer | grep -- '-rw-r--r--'" != "" ]] ; then
-    chmod +x AltServer
+if [[ "stat ./bin/AltServer | grep -- '-rw-r--r--'" != "" ]] ; then
+    chmod +x ./bin/AltServer
 fi
-if [[ "stat netmuxd | grep -- '-rw-r--r--'" != "" ]] ; then
-    sudo chmod +x netmuxd
+if [[ "stat ./bin/netmuxd | grep -- '-rw-r--r--'" != "" ]] ; then
+    sudo chmod +x ./bin/netmuxd
 fi
 if [[ ! -e "AltServer.service" ]] ; then
-    sed 's@<path>@'"$PWD"'@' AltServer.service.dist > AltServer.service
+    sed 's@<path>@'"$PWD"'@' ./services/AltServer.service.dist > ./bin/AltServer.service
     echo "[i] Altserver service file created, link it to systemd to enable|start|stop it!"
     echo
 fi
 if [[ ! -e "netmuxd.service" ]] ; then
-    sed 's@<path>@'"$PWD"'@' netmuxd.service.dist > netmuxd.service
+    sed 's@<path>@'"$PWD"'@' ./services/netmuxd.service.dist > ./bin/netmuxd.service
     echo "[i] netmux service file created, link it to systemd to enable|start|stop it!"
     echo
 fi
 
-# sudo ln -s `pwd`/AltServer.service /lib/systemd/system/AltServer.service
-# sudo ln -s `pwd`/netmuxd.service /lib/systemd/system/netmuxd.service 
+# sudo ln -s `pwd`/bin/AltServer.service /lib/systemd/system/AltServer.service
+# sudo ln -s `pwd`/bin/netmuxd.service /lib/systemd/system/netmuxd.service 
 
 echo "[i] All Tasks done!"
