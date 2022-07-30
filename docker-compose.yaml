@@ -2,6 +2,7 @@ version: '3'
 services:
   netmuxd:
      build: netmuxd_builder
+     command: sh -c "cargo build && cp target/debug/netmuxd /build/"
      volumes: 
       - .:/build
   anisette:
