@@ -1,7 +1,9 @@
 version: '3'
 services:
   netmuxd:
-     build: netmuxd_builder
+     container_name: netmuxd
+     build: 
+      dockerfile: Dockerfile.netmuxd
      command: sh -c "cargo build && cp target/debug/netmuxd /build/"
      volumes: 
       - .:/build
