@@ -26,3 +26,5 @@ git clone https://github.com/hkfuertes/alt-server-wifi .
 # Run install script
 ./install.sh
 ```
+
+> Usefull: docker-compose build --no-cache netmuxd
