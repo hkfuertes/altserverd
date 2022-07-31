@@ -28,4 +28,6 @@ RUN chmod +x AltServer
 COPY --from=stage1 /netmuxd/target/debug/netmuxd .
 RUN chmod +x netmuxd
 
+# RUN ./netmuxd &>/dev/null &
+
 ENTRYPOINT [ "AltServer" ]
