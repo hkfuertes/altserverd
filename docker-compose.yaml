@@ -13,3 +13,13 @@ services:
     restart: unless-stopped
     ports:
       - "6969:6969"
+  altserver:
+    build: .
+    container_name: altserver
+    volumes:
+      - '/dev/bus/usb:/dev/bus/usb'
+      - '/var/lib/lockdown:/var/lib/lockdown'
+      - '/var/run:/var/run'
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    network_mode: host
