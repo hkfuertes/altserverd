@@ -1,4 +1,4 @@
-## AltServer Wifi (with Docker)
+## [WIP] AltServer Wifi (with Docker)
 The idea of this project was to create a docker container with everything needed for a wifi refresh altserver instalacion platform independant. To do so, some important tools are built via docker for the platform that this repo will be running from.
 
 To run the refresh via wifi, `netmuxd` need to be present and built for the specific platform. In this case a `docker-compose` file is provided to ease this task.

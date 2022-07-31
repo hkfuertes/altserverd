@@ -2,13 +2,14 @@ version: '3'
 services:
   netmuxd:
      container_name: netmuxd
-     build: 
+     build:
+      context: .
       dockerfile: netmuxd.dockerfile
      command: sh -c "cargo build && cp target/debug/netmuxd /build/"
      volumes: 
       - ./bin:/build
   anisette:
-    build: ./provision
+    build: ./anisette
     restart: unless-stopped
     ports:
       - "6969:6969"

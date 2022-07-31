@@ -3,13 +3,14 @@
 # Edited by: hkfuertes
 
 sudo echo "[i] Superused cached!"
+mkdir bin
 
 # Check source and permission
 cd "$(dirname "$0")" || exit
 echo "[i] Checking source"
-if [[ ! -e "AltStore.ipa" ]]; then
+if [[ ! -e "./bin/AltStore.ipa" ]]; then
     echo "[i] Downloading AltStore.ipa"
-    curl -# -L https://cdn.altstore.io/file/altstore/apps/altstore/1_4_9.ipa > AltStore.ipa
+    curl -# -L https://cdn.altstore.io/file/altstore/apps/altstore/1_4_9.ipa > ./bin/AltStore.ipa
     echo "[i] AltStore.ipa Downloaded!"
     echo
 fi
