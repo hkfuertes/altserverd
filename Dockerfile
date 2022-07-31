@@ -15,8 +15,6 @@ RUN cargo build
 #####################################
 FROM ubuntu
 
-# ENV DBUS_SESSION_BUS_ADDRESS="unix:path=/var/run/dbus/system_bus_socket"
-
 WORKDIR /app
 
 RUN apt-get update -yy && \
@@ -24,23 +22,21 @@ RUN apt-get update -yy && \
         avahi-daemon avahi-discover avahi-utils libnss-mdns \
         iputils-ping dnsutils
 
-RUN apt-get update && apt-get install -y usbmuxd curl usbutils iproute2 libimobiledevice-utils libavahi-compat-libdnssd-dev dbus
+RUN apt-get update && apt-get install -y usbmuxd curl usbutils iproute2 libimobiledevice-utils libavahi-compat-libdnssd-dev dbus wget
 
-# workaround to get dbus working, required for avahi to talk to dbus. This will be mounted
-RUN mkdir -p /var/run/dbus
-VOLUME /var/run/dbus
+RUN sed -i 's/.*enable-dbus=.*/enable-dbus=no/' /etc/avahi/avahi-daemon.conf
 
-# Start dBus
-#RUN rm -rf /var/run/dbus/pid
-RUN RUN /etc/init.d/dbus start
-# RUN dbus-daemon --system
-# RUN dbus-daemon --config-file=/usr/share/dbus-1/system.conf
+# # workaround to get dbus working, required for avahi to talk to dbus. This will be mounted
+# RUN mkdir -p /var/run/dbus
+# VOLUME /var/run/dbus
 
-#RUN sed -i 's/.*enable-dbus=.*/enable-dbus=no/' /etc/avahi/avahi-daemon.conf
+# # Start dBus
+# #RUN rm -rf /var/run/dbus/pid
+# RUN /etc/init.d/dbus start
 
 # Avahi start daemon
 #RUN rm -rf /run/avahi-daemon//pid
-RUN /etc/init.d/avahi-daemon start
+#RUN /etc/init.d/avahi-daemon start
 
 # Download 'some' AltStore
 RUN curl -L https://cdn.altstore.io/file/altstore/apps/altstore/1_4_9.ipa > AltStore.ipa
@@ -54,7 +50,10 @@ RUN chmod +x AltServer
 COPY --from=netmuxd /netmuxd/target/debug/netmuxd .
 RUN chmod +x netmuxd
 
+RUN wget https://github.com/jkcoxson/netmuxd/releases/download/v0.1.2/netmuxd-x86_64
+
+RUN avahi-daemon &>/dev/null &
+RUN usbmuxd &>/dev/null &
 RUN ./netmuxd &>/dev/null &
-# RUN usbmuxd &>/dev/null &
 
 ENTRYPOINT [ "bash" ]
