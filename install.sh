@@ -3,7 +3,7 @@
 # Edited by: hkfuertes
 
 sudo echo "[i] Superused cached!"
-mkdir bin
+mkdir -p bin
 
 # Check source and permission
 cd "$(dirname "$0")" || exit
