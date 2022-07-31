@@ -52,8 +52,21 @@ RUN chmod +x netmuxd
 
 RUN wget https://github.com/jkcoxson/netmuxd/releases/download/v0.1.2/netmuxd-x86_64
 
-RUN avahi-daemon &>/dev/null &
-RUN usbmuxd &>/dev/null &
-RUN ./netmuxd &>/dev/null &
+RUN avahi-daemon &>avahi.log &
+RUN usbmuxd &
+
+ENV USBMUXD_SOCKET_ADDRESS=127.0.0.1:27015
+RUN ./netmuxd --disable-unix --host 127.0.0.1 &
 
 ENTRYPOINT [ "bash" ]
+
+
+# docker build -t altserver .
+# sudo docker run \
+#     --privileged \
+#     --network host \
+#     -v /dev/bus/usb:/dev/bus/usb \
+#     -v /var/lib/lockdown:/var/lib/lockdown \
+#     -v /var/run:/var/run \
+#     -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
+#     -it altserver $@
