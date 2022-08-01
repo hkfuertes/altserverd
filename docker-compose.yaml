@@ -13,6 +13,17 @@ services:
   #   restart: unless-stopped
   #   ports:
   #     - "6969:6969"
+    altserver-host:
+    build: .
+    container_name: altserver-host
+    volumes:
+      - '/dev/bus/usb:/dev/bus/usb'
+      - '/var/lib/lockdown:/var/lib/lockdown'
+      - '/var/run:/var/run'
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    stdin_open: true
+    tty: true
   altserver:
     build: .
     container_name: altserver
@@ -24,19 +35,18 @@ services:
     privileged: true
     stdin_open: true
     tty: true
-    network_mode: host
-#     networks:
-#       home-lan:
-#         ipv4_address: 192.168.1.242
+     networks:
+       home-lan:
+         ipv4_address: 192.168.1.242
 
-# networks:
-#   home-lan:
-#     name: home-lan
-#     driver: macvlan
-#     driver_opts:
-#       parent: wlp0s20f3
-#     ipam:
-#       config:
-#         - subnet: 192.168.1.0/24
-#           ip_range: 192.168.1.0/24
-#           gateway: 192.168.1.1
+ networks:
+   home-lan:
+     name: home-lan
+     driver: macvlan
+     driver_opts:
+       parent: wlp0s20f3
+     ipam:
+       config:
+         - subnet: 192.168.1.0/24
+           ip_range: 192.168.1.0/24
+           gateway: 192.168.1.1
