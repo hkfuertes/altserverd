@@ -17,25 +17,26 @@ services:
   
   config:
     build: .
-    container_name: altserver
+    container_name: altserver_config
     volumes:
-      - '/dev/bus/usb:/dev/bus/usb'
-      - '/var/lib/lockdown:/var/lib/lockdown'
-      - '/var/run:/var/run'
+      - /dev/bus/usb:/dev/bus/usb
+      - /var/lib/lockdown:/var/lib/lockdown
+      - /var/run:/var/run
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     stdin_open: true
     tty: true
     network_mode: host
-    command: /bin/bash
+    environment:
+      - CONFIG=true
 
   altserver:
     build: .
     container_name: altserver
     volumes:
-      - '/dev/bus/usb:/dev/bus/usb'
-      - '/var/lib/lockdown:/var/lib/lockdown'
-      - '/var/run:/var/run'
+      - /dev/bus/usb:/dev/bus/usb
+      - /var/lib/lockdown:/var/lib/lockdown
+      - /var/run:/var/run
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     network_mode: host
