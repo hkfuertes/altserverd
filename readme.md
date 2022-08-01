@@ -1,18 +1,19 @@
 ## [WIP] AltServer Wifi (with Docker)
 The idea of this project was to create a docker container with everything needed for a wifi refresh altserver instalacion platform independant. To do so, some important tools are built via docker for the platform that this repo will be running from.
 
-To run the refresh via wifi, `netmuxd` need to be present and built for the specific platform. In this case a `docker-compose` file is provided to ease this task.
-- Build netmuxd: `docker-compose up netmuxd`
-
-Aditionally, if a custom anisette server is needed to be run, there is another convenience service in the `docker-compose` that will build and run an anisette server on port `6969`
-- Build & run anisette: `docker-compose up anisette`
-
-### Run via Docker (Manually for now)
-First version of dockerized AltServer. To run (manually for now):
-- `docker-compose run config`: this will bring you to a `bash` inside the image, already prepared.
-  - Use `usbmuxd` to pair the device.
-- `docker-compose up -d altserver` will bring AltServer in wifi listening.
-
+### Run via Docker
+```bash
+# To enter in "config" mode to pair a device with "usbmuxd"
+# Will run bash inside prepared environment
+docker-compose run config 
+# To bring up AltServer
+docker-compose up -d altserver
+# To build netmuxd
+docker-compose run netmuxd
+# To start anisette server
+# You might need to add the environment vars inside docker-compose for altserver
+docker-compose up anisette #
+```
 #### TODO:
 - Split `usbmuxd` into separated container (1-time continer) and share across the volume `/var/lib/lockdown` where the keys are stored.
 
