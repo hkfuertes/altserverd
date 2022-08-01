@@ -38,12 +38,7 @@ RUN chmod +x AltServer
 COPY --from=netmuxd /netmuxd/target/debug/netmuxd .
 RUN chmod +x netmuxd
 
-RUN wget https://github.com/jkcoxson/netmuxd/releases/download/v0.1.2/netmuxd-x86_64
-RUN chmod +x netmuxd-x86_64
-
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
-
-RUN echo "altserver" > /etc/hostname
 
 ENTRYPOINT [ "./entrypoint.sh" ]
