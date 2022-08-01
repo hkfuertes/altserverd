@@ -5,11 +5,14 @@ The idea of this project was to create a docker container with everything needed
 ```bash
 # To enter in "config" mode to pair a device with "usbmuxd"
 # Will run bash inside prepared environment
-docker-compose run config 
+docker-compose run config
+
 # To bring up AltServer
 docker-compose up -d altserver
+
 # To build netmuxd
 docker-compose run netmuxd
+
 # To start anisette server
 # You might need to add the environment vars inside docker-compose for altserver
 docker-compose up anisette #
