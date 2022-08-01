@@ -15,7 +15,7 @@ services:
     ports:
       - "6969:6969"
   
-  altserver:
+  config:
     build: .
     container_name: altserver
     volumes:
@@ -26,4 +26,16 @@ services:
     privileged: true
     stdin_open: true
     tty: true
+    network_mode: host
+    command: /bin/bash
+
+  altserver:
+    build: .
+    container_name: altserver
+    volumes:
+      - '/dev/bus/usb:/dev/bus/usb'
+      - '/var/lib/lockdown:/var/lib/lockdown'
+      - '/var/run:/var/run'
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
     network_mode: host
