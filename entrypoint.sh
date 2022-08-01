@@ -2,6 +2,6 @@
 
 rm -rf /run/avahi-daemon//pid
 /etc/init.d/avahi-daemon start
-usbmuxd
+#usbmuxd
 ./netmuxd &>/dev/null &
 /bin/bash
