@@ -32,3 +32,4 @@ There is a project that already does this exact same thing using a convenience s
 - https://github.com/NyaMisty/AltServer-Linux @NyaMisty
 - https://github.com/Dadoum/Provision @Dodaum
 - https://github.com/jkcoxson/netmuxd @jkcoxson
+- https://github.com/powenn/AltServer-Linux-ShellScript @powenn
