@@ -1,4 +1,4 @@
-## [WIP] AltServer Wifi (with Docker)
+## AltServer Wifi (with Docker)
 The idea of this project was to create a docker container with everything needed for a wifi refresh altserver instalacion platform independant. To do so, some important tools are built via docker for the platform that this repo will be running from.
 
 ### Run via Docker
