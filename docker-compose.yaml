@@ -25,9 +25,9 @@ services:
     stdin_open: true
     tty: true
 #    network_mode: host
-     networks:
-       lan:
-         ipv4_address: 192.168.1.42
+    networks:
+      lan:
+        ipv4_address: 192.168.1.42
 
 networks:
   lan:
