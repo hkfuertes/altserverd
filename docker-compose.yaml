@@ -8,12 +8,6 @@ services:
      command: sh -c "cargo build && cp target/debug/netmuxd /build/"
      volumes: 
       - .:/build
-
-  anisette:
-    build: ./anisette
-    restart: unless-stopped
-    ports:
-      - "6969:6969"
   
   config:
     build: .

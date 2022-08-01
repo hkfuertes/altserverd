@@ -12,10 +12,6 @@ docker-compose up -d altserver
 
 # To build netmuxd
 docker-compose run netmuxd
-
-# To start anisette server
-# You might need to add the environment vars inside docker-compose for altserver
-docker-compose up -d anisette
 ```
 #### TODO:
 - Split `usbmuxd` into separated container (one-time continer) and share across the volume `/var/lib/lockdown` where the keys are stored.
