@@ -60,7 +60,7 @@ networks:
   macvlan:
     driver: macvlan
     driver_opts:
-      parent: wlan #your ethernet interface
+      parent: wlan0 #your ethernet interface
     ipam:
       config:
         - subnet: 192.168.1.0/24
