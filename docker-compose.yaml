@@ -14,19 +14,6 @@ services:
     ports:
       - "6969:6969"
   
-  altserverhost:
-    build: .
-    container_name: altserverhost
-    volumes:
-      - '/dev/bus/usb:/dev/bus/usb'
-      - '/var/lib/lockdown:/var/lib/lockdown'
-      - '/var/run:/var/run'
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    stdin_open: true
-    tty: true
-    network_mode: host
-
   altserver:
     build: .
     container_name: altserver
@@ -38,25 +25,4 @@ services:
     privileged: true
     stdin_open: true
     tty: true
-#    network_mode: host
-    networks:
-      ipvlan:
-        ipv4_address: 192.168.1.42
-
-networks:
-#  macvlan:
-#    driver: macvlan
-#    driver_opts:
-#      parent: wlan0 #your ethernet interface
-#    ipam:
-#      config:
-#        - subnet: 192.168.1.0/24
-#          gateway: 192.168.1.1
-  ipvlan:
-    driver: ipvlan
-    driver_opts:
-      ipvlan_mode: l2
-    ipam:
-      config:
-        - subnet: 192.168.1.0/24
-          gateway: 192.168.1.1
+    network_mode: host
