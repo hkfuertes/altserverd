@@ -34,7 +34,7 @@ services:
      name: home-lan
      driver: macvlan
      driver_opts:
-       parent: wlp0s20f3
+       parent: wlan0
      ipam:
        config:
          - subnet: 192.168.1.0/24
