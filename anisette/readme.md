@@ -1,6 +1,6 @@
 ### Build & run
 ```bash
-docker build -t anisette provision/
+docker build -t anisette .
 docker run -p 6969:6969 anisette
 ```
 
