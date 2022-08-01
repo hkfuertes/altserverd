@@ -7,7 +7,7 @@ services:
       dockerfile: netmuxd.dockerfile
      command: sh -c "cargo build && cp target/debug/netmuxd /build/"
      volumes: 
-      - ./bin:/build
+      - .:/build
 
   anisette:
     build: ./anisette
@@ -40,3 +40,4 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     network_mode: host
+    restart: unless-stopped
