@@ -26,8 +26,8 @@ To do so:
   docker-compose run netmuxd
   
 - Copy [x64-run.sh](https://raw.githubusercontent.com/powenn/AltServer-Linux-ShellScript/main/x64-run.sh) onto the extracted folder.
-- Copy built `netmuxd` onto extracted folder.
-- Run `x64-run.sh`
+- Copy built **netmuxd** executable onto extracted folder.
+- Run _x64-run.sh_
 
 ## Credits
 - https://github.com/NyaMisty/AltServer-Linux @NyaMisty
