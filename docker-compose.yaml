@@ -24,31 +24,19 @@ services:
     privileged: true
     stdin_open: true
     tty: true
-    networks:
-      internal:
-    depends_on:
-      - avahi
+    network_mode: host
+#     networks:
+#       home-lan:
+#         ipv4_address: 192.168.1.242
 
-  avahi:
-    container_name: mdns-reflector
-    image: flungo/avahi
-    environment:
-      - REFLECTOR_ENABLE_REFLECTOR=yes
-    networks:
-      home-lan:
-        ipv4_address: 192.168.1.242
-      internal:
-
-networks:
-  internal:
-    name: internal
-  home-lan:
-    name: home-lan
-    driver: macvlan
-    driver_opts:
-      parent: wlp0s20f3
-    ipam:
-      config:
-        - subnet: 192.168.1.0/24
-          ip_range: 192.168.1.0/24
-          gateway: 192.168.1.1
+# networks:
+#   home-lan:
+#     name: home-lan
+#     driver: macvlan
+#     driver_opts:
+#       parent: wlp0s20f3
+#     ipam:
+#       config:
+#         - subnet: 192.168.1.0/24
+#           ip_range: 192.168.1.0/24
+#           gateway: 192.168.1.1

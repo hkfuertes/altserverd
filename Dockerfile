@@ -44,15 +44,6 @@ RUN chmod +x netmuxd-x86_64
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
 
-ENTRYPOINT [ "entrypoint.sh" ]
+RUN echo "altserver" > /etc/hostname
 
-
-# docker build -t altserver .
-# sudo docker run \
-#     --privileged \
-#     --network host \
-#     -v /dev/bus/usb:/dev/bus/usb \
-#     -v /var/lib/lockdown:/var/lib/lockdown \
-#     -v /var/run:/var/run \
-#     -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
-#     -it altserver $@
+ENTRYPOINT [ "./entrypoint.sh" ]
