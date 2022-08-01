@@ -22,21 +22,9 @@ RUN apt-get update -yy && \
         avahi-daemon avahi-discover avahi-utils libnss-mdns \
         iputils-ping dnsutils
 
-RUN apt-get update && apt-get install -y usbmuxd curl usbutils iproute2 libimobiledevice-utils libavahi-compat-libdnssd-dev dbus wget
-
 RUN sed -i 's/.*enable-dbus=.*/enable-dbus=no/' /etc/avahi/avahi-daemon.conf
 
-# # workaround to get dbus working, required for avahi to talk to dbus. This will be mounted
-# RUN mkdir -p /var/run/dbus
-# VOLUME /var/run/dbus
-
-# # Start dBus
-# #RUN rm -rf /var/run/dbus/pid
-# RUN /etc/init.d/dbus start
-
-# Avahi start daemon
-#RUN rm -rf /run/avahi-daemon//pid
-#RUN /etc/init.d/avahi-daemon start
+RUN apt-get update && apt-get install -y usbmuxd curl usbutils iproute2 libimobiledevice-utils libavahi-compat-libdnssd-dev wget
 
 # Download 'some' AltStore
 RUN curl -L https://cdn.altstore.io/file/altstore/apps/altstore/1_4_9.ipa > AltStore.ipa
@@ -51,14 +39,12 @@ COPY --from=netmuxd /netmuxd/target/debug/netmuxd .
 RUN chmod +x netmuxd
 
 RUN wget https://github.com/jkcoxson/netmuxd/releases/download/v0.1.2/netmuxd-x86_64
+RUN chmod +x netmuxd-x86_64
 
-RUN avahi-daemon &>avahi.log &
-RUN usbmuxd &
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
 
-ENV USBMUXD_SOCKET_ADDRESS=127.0.0.1:27015
-RUN ./netmuxd --disable-unix --host 127.0.0.1 &
-
-ENTRYPOINT [ "bash" ]
+ENTRYPOINT [ "entrypoint.sh" ]
 
 
 # docker build -t altserver .

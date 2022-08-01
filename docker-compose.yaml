@@ -1,18 +1,18 @@
 version: '3'
 services:
-  netmuxd:
-     container_name: netmuxd
-     build:
-      context: .
-      dockerfile: netmuxd.dockerfile
-     command: sh -c "cargo build && cp target/debug/netmuxd /build/"
-     volumes: 
-      - ./bin:/build
-  anisette:
-    build: ./anisette
-    restart: unless-stopped
-    ports:
-      - "6969:6969"
+  # netmuxd:
+  #    container_name: netmuxd
+  #    build:
+  #     context: .
+  #     dockerfile: netmuxd.dockerfile
+  #    command: sh -c "cargo build && cp target/debug/netmuxd /build/"
+  #    volumes: 
+  #     - ./bin:/build
+  # anisette:
+  #   build: ./anisette
+  #   restart: unless-stopped
+  #   ports:
+  #     - "6969:6969"
   altserver:
     build: .
     container_name: altserver
@@ -22,4 +22,33 @@ services:
       - '/var/run:/var/run'
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
-    network_mode: host
+    stdin_open: true
+    tty: true
+    networks:
+      internal:
+    depends_on:
+      - avahi
+
+  avahi:
+    container_name: mdns-reflector
+    image: flungo/avahi
+    environment:
+      - REFLECTOR_ENABLE_REFLECTOR=yes
+    networks:
+      home-lan:
+        ipv4_address: 192.168.1.242
+      internal:
+
+networks:
+  internal:
+    name: internal
+  home-lan:
+    name: home-lan
+    driver: macvlan
+    driver_opts:
+      parent: wlp0s20f3
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
+          ip_range: 192.168.1.0/24
+          gateway: 192.168.1.1
