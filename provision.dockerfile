@@ -1,7 +1,7 @@
 # Provision Build Dockerfile
 # https://github.com/Dadoum/Provision
 #
-# docker build -t provision - < provison.dockerfile
+# docker build -t provision - < provision.dockerfile
 # docker run -p 6969:6969 -v /path/to/lib:/app/build/lib provision
 #
 # "lib" folder can be found in android's Apple Music APK.
