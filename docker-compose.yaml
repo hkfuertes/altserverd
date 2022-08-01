@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   # netmuxd:
   #    container_name: netmuxd
@@ -31,7 +31,6 @@ services:
 
 networks:
   lan:
-    name: lan
     driver: macvlan
     driver_opts:
       parent: wlan #your ethernet interface
