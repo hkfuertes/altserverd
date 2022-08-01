@@ -21,9 +21,14 @@ docker-compose up -d anisette
 - Split `usbmuxd` into separated container (one-time continer) and share across the volume `/var/lib/lockdown` where the keys are stored.
 
 ### Using powenn/AltServer-Linux-ShellScript
-There is a project that already does this exact same thing using a convenience script, but as `netmuxd` is not built by default for all the platforms, its script only supports wifi refresh for `x86_64`. As a way to build is provided for you specific platform, it is possible run the `x86_64` version of their script on our instalation to achieve wifi refresh, to do so:
+There is a project that already does this exact same thing using a convenience script, but as `netmuxd` is not built by default for all the platforms, its script only supports wifi refresh for `x86_64`. As a way to build is provided for your specific platform, it is possible to run the `x86_64` version of their script on your instalation to achieve wifi refresh. 
+
+To do so:
 - Download the [package](https://github.com/powenn/AltServer-Linux-ShellScript/releases) and extract it.
-- Build `netmuxd`: `docker-compose run netmuxd`
+- Build **netmuxd**: 
+  ```bash
+  docker-compose run netmuxd
+  
 - Copy [x64-run.sh](https://raw.githubusercontent.com/powenn/AltServer-Linux-ShellScript/main/x64-run.sh) onto the extracted folder.
 - Copy built `netmuxd` onto extracted folder.
 - Run `x64-run.sh`
