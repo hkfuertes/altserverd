@@ -1,18 +1,19 @@
 version: '2'
 services:
-  # netmuxd:
-  #    container_name: netmuxd
-  #    build:
-  #     context: .
-  #     dockerfile: netmuxd.dockerfile
-  #    command: sh -c "cargo build && cp target/debug/netmuxd /build/"
-  #    volumes: 
-  #     - ./bin:/build
-  # anisette:
-  #   build: ./anisette
-  #   restart: unless-stopped
-  #   ports:
-  #     - "6969:6969"
+  netmuxd:
+     container_name: netmuxd
+     build:
+      context: .
+      dockerfile: netmuxd.dockerfile
+     command: sh -c "cargo build && cp target/debug/netmuxd /build/"
+     volumes: 
+      - ./bin:/build
+  anisette:
+    build: ./anisette
+    restart: unless-stopped
+    ports:
+      - "6969:6969"
+  
   altserverhost:
     build: .
     container_name: altserverhost
@@ -28,7 +29,7 @@ services:
 
   altserver:
     build: .
-    container_name: altservermacvlan
+    container_name: altserver
     volumes:
       - '/dev/bus/usb:/dev/bus/usb'
       - '/var/lib/lockdown:/var/lib/lockdown'
