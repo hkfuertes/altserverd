@@ -1,8 +1,0 @@
-[Unit]
-Description=netmuxd
-
-[Service]
-ExecStart=<path>/netmuxd
-
-[Install]
-WantedBy=multi-user.target

@@ -1,8 +1,0 @@
-[Unit]
-Description=AltServer
-
-[Service]
-ExecStart=<path>/AltServer
-
-[Install]
-WantedBy=multi-user.target
