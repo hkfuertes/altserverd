@@ -27,3 +27,8 @@ There is a project that already does this exact same thing using a convenience s
 - Copy [x64-run.sh](https://raw.githubusercontent.com/powenn/AltServer-Linux-ShellScript/main/x64-run.sh) onto the extracted folder.
 - Copy built `netmuxd` onto extracted folder.
 - Run `x64-run.sh`
+
+## Credits
+- https://github.com/NyaMisty/AltServer-Linux @NyaMisty
+- https://github.com/Dadoum/Provision @Dodaum
+- https://github.com/jkcoxson/netmuxd @jkcoxson
