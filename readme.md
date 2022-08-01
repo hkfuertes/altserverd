@@ -9,13 +9,12 @@ Aditionally, if a custom anisette server is needed to be run, there is another c
 
 ### Run via Docker (Manually for now)
 First version of dockerized AltServer. To run (manually for now):
-- `docker-compose up config`: this will bring you to a `bash` inside the image, already prepared.
-- `./AltServer` with arguments to run.
-- `usbmuxd` or `idevicepair pair` to pair the device.
+- `docker-compose run config`: this will bring you to a `bash` inside the image, already prepared.
+  - Use `usbmuxd` to pair the device.
+- `docker-compose up -d altserver` will bring AltServer in wifi listening.
 
 #### TODO:
 - Split `usbmuxd` into separated container (1-time continer) and share across the volume `/var/lib/lockdown` where the keys are stored.
-- Duplicate `altserver` container to be as-is for server wifi refresh and `config` for the bash that right now exists.
 
 ### Using powenn/AltServer-Linux-ShellScript
 There is a project that already does this exact same thing using a convenience script, but as `netmuxd` is not built by default for all the platforms, its script only supports wifi refresh for `x86_64`. As a way to build is provided for you specific platform, it is possible run the `x86_64` version of their script on our instalation to achieve wifi refresh, to do so:
