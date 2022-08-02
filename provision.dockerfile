@@ -16,6 +16,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y ninja-build pkg-config git build-essential wget libssl-dev dub libplist-dev curl cmake ldc libimobiledevice-dev
 
 RUN git clone https://github.com/Dadoum/Provision --recursive .
+RUN git checkout tags/1.0.0
 RUN mkdir build && cd build && cmake -G Ninja .. -DCMAKE_BUILD_TYPE=Release -Dbuild_sideloadipa=OFF && ninja
 
 WORKDIR /app/build
