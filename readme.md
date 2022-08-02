@@ -1,5 +1,5 @@
 ## AltServerd (AltServer Docker)
-The idea of this project was to create a docker container with everything needed for a wifi refresh altserver instalacion platform independant. To do so, some important tools are built via docker for the platform that this repo will be running from.
+Docker & docker-compose solutions for the combo [AltServer](https://github.com/NyaMisty/AltServer-Linux) and [netmuxd](https://github.com/jkcoxson/netmuxd). It provides an environment to build **netmuxd** and also an image/docker-compose to run everything in its own environment with all the dependencies met.
 
 ### Run via Docker
 ```bash
@@ -13,24 +13,13 @@ docker-compose up -d altserver
 # To build netmuxd
 docker-compose run netmuxd
 ```
-#### TODO:
+> You can use this repo with **[powenn/AltServer-Linux-ShellScript](https://github.com/powenn/AltServer-Linux-ShellScript)**. **@powenn** has implemented wifi refresh for *x86_64* but not for other platforms as [netmuxd](https://github.com/jkcoxson/netmuxd/releases) is not built by **@jkcoxson** for all the platforms. Using this repo and its dockerfile (see above) you can build **netmuxd** for your environment and use 
+[x64-run.sh](https://raw.githubusercontent.com/powenn/AltServer-Linux-ShellScript/main/x64-run.sh) script from @powenn repo to have wifi refresh.
+
+### TODO
 - Split `usbmuxd` into separated container (one-time continer) and share across the volume `/var/lib/lockdown` where the keys are stored.
-
-### Using powenn/AltServer-Linux-ShellScript
-There is a project that already does this exact same thing using a convenience script, but as `netmuxd` is not built by default for all the platforms, its script only supports wifi refresh for `x86_64`. As a way to build is provided for your specific platform, it is possible to run the `x86_64` version of their script on your instalation to achieve wifi refresh. 
-
-To do so:
-- Download the [package](https://github.com/powenn/AltServer-Linux-ShellScript/releases) and extract it.
-- Build **netmuxd**: 
-  ```bash
-  docker-compose run netmuxd
-  
-- Copy [x64-run.sh](https://raw.githubusercontent.com/powenn/AltServer-Linux-ShellScript/main/x64-run.sh) onto the extracted folder.
-- Copy built **netmuxd** executable onto extracted folder.
-- Run _x64-run.sh_
 
 ## Credits
 - https://github.com/NyaMisty/AltServer-Linux @NyaMisty
 - https://github.com/Dadoum/Provision @Dodaum
 - https://github.com/jkcoxson/netmuxd @jkcoxson
-- https://github.com/powenn/AltServer-Linux-ShellScript @powenn
