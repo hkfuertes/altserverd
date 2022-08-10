@@ -1,6 +1,13 @@
 ## AltServerd (AltServer Docker)
 Docker & docker-compose solutions for the combo [AltServer](https://github.com/NyaMisty/AltServer-Linux) and [netmuxd](https://github.com/jkcoxson/netmuxd). It provides an environment to build **netmuxd** and also an image/docker-compose to run everything in its own environment with all the dependencies met.
 
+### Pre-Requisites (DietPi)
+Following packages need to be installed:
+- Docker
+- Docker Compose
+- Git
+- Avahi-daemon
+
 ### Run via Docker
 ```bash
 # To enter in "config" mode to pair a device with "usbmuxd"
@@ -8,6 +15,7 @@ Docker & docker-compose solutions for the combo [AltServer](https://github.com/N
 docker-compose run config
 
 # To bring up AltServer
+# Recomendation: First refresh via USB
 docker-compose up -d altserver
 
 # To build netmuxd
