@@ -5,7 +5,7 @@ Docker & docker-compose solutions for the combo [AltServer](https://github.com/N
 Following packages need to be installed: 
 
 ```bash
-# dockek, docker-compose, git, avahi-daemon
+# docker, docker-compose, git, avahi-daemon
 dietpi-software install 162 134 17 152
 ```
 > _Docker_ (**162**), _docker-compose_ (**134**), _git_ (**17**), _avahi-daemon_ (**152**)
