@@ -1,8 +1,14 @@
 ## AltServerd (AltServer Docker)
 Docker & docker-compose solutions for the combo [AltServer](https://github.com/NyaMisty/AltServer-Linux) and [netmuxd](https://github.com/jkcoxson/netmuxd). It provides an environment to build **netmuxd** and also an image/docker-compose to run everything in its own environment with all the dependencies met.
 
-### Pre-Requisites (DietPi)
-Following packages need to be installed: _Docker_ (**162**), _docker-compose_ (**134**), _git_ (**17**), _avahi-daemon_ (**152**)
+### Pre-Requisites for DietPi
+Following packages need to be installed: 
+
+```bash
+# dockek, docker-compose, git, avahi-daemon
+dietpi-software install 162 134 17 152
+```
+> _Docker_ (**162**), _docker-compose_ (**134**), _git_ (**17**), _avahi-daemon_ (**152**)
 
 
 ### Run via Docker
