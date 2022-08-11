@@ -26,6 +26,18 @@ docker-compose run altserver
 dietpi-software install 162 134 17 152
 ```
 
+### Raspberry PI OS Environment Preparation
+```bash
+# Install docker
+curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
+sudo usermod -aG docker $USER # Requires restart/logout for changes to take effect
+sudo systemctl enable --now docker
+sudo systemctl start docker
+
+# Install git, docker-compose, avahi-daemon
+sudo apt update; sudo apt install -y git docker-compose avahi-daemon
+```
+
 ## Credits
 - https://github.com/NyaMisty/AltServer-Linux @NyaMisty
 - https://github.com/Dadoum/Provision @Dodaum
