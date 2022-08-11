@@ -2,7 +2,7 @@ FROM rust
 
 WORKDIR /app
 
-RUN git clone https://github.com/jkcoxson/netmuxd -b v0.1.2 .
+RUN git clone https://github.com/jkcoxson/netmuxd -b v0.1.1 .
 
 RUN sed -i 's/, path = "..\/zeroconf-rs\/zeroconf", optional = true//g' Cargo.toml
 RUN sed -i 's/, path = "..\/mdns"//g' Cargo.toml
