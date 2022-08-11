@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y libavahi-compat-libdnssd-dev libclang-d
 
 RUN cargo build
 #####################################
-FROM alpine:3.15
+FROM alpine:3.15 AS altserver
 
 # Preparing Alpine
 RUN  apk add zsh git curl wget g++ clang boost-static ninja boost-dev cmake make sudo bash vim libressl-dev util-linux-dev zlib-dev zlib-static
