@@ -28,13 +28,13 @@ RUN git clone https://github.com/StableCoder/cmake-scripts scripts
 RUN mkdir build; cd build; CC=clang CXX=clang++ cmake ..;
 WORKDIR /buildenv/corecrypto/build
 RUN sed -i -E 's|^(all: CMakeFiles\/corecrypto_perf)|#\1|' CMakeFiles/Makefile2; sed -i -E 's|^(all: CMakeFiles\/corecrypto_test)|#\1|' CMakeFiles/Makefile2
-RUN make -j6; make install
+RUN make; make install
 
 # Build c++ rest sdk
 WORKDIR /buildenv/cpprestsdk
 RUN git clone --recursive https://github.com/microsoft/cpprestsdk .; 
 RUN sed -i 's|-Wcast-align||' "./Release/CMakeLists.txt"
-RUN mkdir build; cd build; cmake -DBUILD_SHARED_LIBS=0 ..; make -j6; make install
+RUN mkdir build; cd build; cmake -DBUILD_SHARED_LIBS=0 ..; make; make install
 
 # Build libzip
 WORKDIR /buildenv
