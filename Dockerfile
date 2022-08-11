@@ -2,7 +2,7 @@ FROM rust AS netmuxd
 
 WORKDIR /netmuxd
 
-RUN git clone https://github.com/jkcoxson/netmuxd -b tags/v0.1.2 .
+RUN git clone https://github.com/jkcoxson/netmuxd -b v0.1.2 .
 
 RUN sed -i 's/, path = "..\/zeroconf-rs\/zeroconf", optional = true//g' Cargo.toml
 RUN sed -i 's/, path = "..\/mdns"//g' Cargo.toml
@@ -42,7 +42,7 @@ RUN git clone https://github.com/nih-at/libzip && cd libzip; mkdir build; cd bui
 
 # Build altserver
 WORKDIR /buildenv/altserver
-RUN git clone --recursive https://github.com/NyaMisty/AltServer-Linux -b tags/v0.0.5 .
+RUN git clone --recursive https://github.com/NyaMisty/AltServer-Linux -b v0.0.5 .
 RUN mkdir build && make && mv ./AltServer-* ./altserver
 #####################################
 FROM ubuntu
