@@ -19,8 +19,7 @@ docker-compose run netmuxd
 # Version: tags/v0.0.5
 docker-compose run altserver
 ```
-> You can use this repo with **[powenn/AltServer-Linux-ShellScript](https://github.com/powenn/AltServer-Linux-ShellScript)**. **@powenn** has implemented wifi refresh for *x86_64* but not for other platforms as [netmuxd](https://github.com/jkcoxson/netmuxd/releases) is not built by **@jkcoxson** for all the platforms. Using this repo and its dockerfile (see above) you can build **netmuxd** for your environment and use 
-[x64-run.sh](https://raw.githubusercontent.com/powenn/AltServer-Linux-ShellScript/main/x64-run.sh) script from @powenn repo to have wifi refresh.
+> A `bin` folder will be created upon any build, holding the just built executable.
 
 ### DietPi Environment Setup
 ```bash
@@ -39,6 +38,9 @@ sudo systemctl start docker
 # Install git, docker-compose, avahi-daemon
 sudo apt update; sudo apt install -y git docker-compose avahi-daemon
 ```
+### powenn/AltServer-Linux-ShellScript
+You can use this repo with **[powenn/AltServer-Linux-ShellScript](https://github.com/powenn/AltServer-Linux-ShellScript)**. **@powenn** has implemented wifi refresh for *x86_64* but not for other platforms as [netmuxd](https://github.com/jkcoxson/netmuxd/releases) is not built by **@jkcoxson** for all the platforms. Using this repo and its dockerfile (see above) you can build **netmuxd** for your environment and use 
+[x64-run.sh](https://raw.githubusercontent.com/powenn/AltServer-Linux-ShellScript/main/x64-run.sh) script from @powenn repo to have wifi refresh.
 
 ## Credits
 - https://github.com/NyaMisty/AltServer-Linux @NyaMisty
