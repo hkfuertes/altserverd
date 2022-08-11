@@ -39,6 +39,6 @@ sudo apt update; sudo apt install -y git docker-compose avahi-daemon
 ```
 
 ## Credits
-- https://github.com/NyaMisty/AltServer-Linux @NyaMisty - Using tags/v0.0.5
-- https://github.com/Dadoum/Provision @Dodaum - Using tags/v0.1.2
+- https://github.com/NyaMisty/AltServer-Linux @NyaMisty - _(Using **tags/v0.0.5**)_
+- https://github.com/Dadoum/Provision @Dodaum _(Using **tags/v0.1.2**)_
 - https://github.com/jkcoxson/netmuxd @jkcoxson
