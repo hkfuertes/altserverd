@@ -4,13 +4,24 @@ services:
      container_name: netmuxd
      build:
       context: .
-      dockerfile: netmuxd.dockerfile
-     command: sh -c "cargo build && cp target/debug/netmuxd /build/"
+      dockerfile: docker/netmuxd.dockerfile
+     command: sh -c "[ ! -f /build/netmuxd ] && cargo build && cp target/debug/netmuxd /build/ && chmod +x /build/netmuxd || return 0"
+     image: netmuxd:latest
      volumes: 
-      - .:/build
+      - ./bin:/build
+
+  altserver:
+     container_name: altserver
+     build:
+      context: .
+      dockerfile: docker/altserver.dockerfile
+     command: sh -c "[ ! -f /build/altserver ] && make && cp /buildenv/altserver/AltServer-* /build/altserver && chmod +x /build/altserver || return 0"
+     image: altserver:latest
+     volumes: 
+      - ./bin:/build
   
   config:
-    build: .
+    build: docker
     container_name: altserver_config
     volumes:
       - /dev/bus/usb:/dev/bus/usb
@@ -20,18 +31,21 @@ services:
     privileged: true
     stdin_open: true
     tty: true
-    network_mode: host
-    environment:
-      - CONFIG=true
+    command: /bin/bash
 
-  altserver:
-    build: .
-    container_name: altserver
+  daemon:
+    build: docker
+    container_name: daemon
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - /var/lib/lockdown:/var/lib/lockdown
       - /var/run:/var/run
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - .:/app
     privileged: true
+    depends_on:
+      - netmuxd
+      - altserver
     network_mode: host
     restart: unless-stopped
+    command: ./run.sh
