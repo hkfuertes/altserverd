@@ -1,16 +1,3 @@
-FROM rust AS netmuxd
-
-WORKDIR /netmuxd
-
-RUN git clone https://github.com/jkcoxson/netmuxd .
-
-RUN sed -i 's/, path = "..\/zeroconf-rs\/zeroconf", optional = true//g' Cargo.toml
-RUN sed -i 's/, path = "..\/mdns"//g' Cargo.toml
-
-RUN apt-get update && apt-get install -y libavahi-compat-libdnssd-dev libclang-dev
-
-RUN cargo build
-#####################################
 FROM alpine:3.15
 
 # Preparing Alpine
@@ -43,33 +30,4 @@ RUN git clone https://github.com/nih-at/libzip && cd libzip; mkdir build; cd bui
 # Build altserver
 WORKDIR /buildenv/altserver
 RUN git clone --recursive https://github.com/NyaMisty/AltServer-Linux .
-RUN mkdir build && make && mv ./AltServer-`arch` ./altserver
-#####################################
-FROM ubuntu
-
-WORKDIR /app
-
-RUN apt-get update -yy && \
-    apt-get install -yy \
-        avahi-daemon avahi-discover avahi-utils libnss-mdns \
-        iputils-ping dnsutils
-
-RUN sed -i 's/.*enable-dbus=.*/enable-dbus=no/' /etc/avahi/avahi-daemon.conf
-
-RUN apt-get update && apt-get install -y usbmuxd curl usbutils iproute2 libimobiledevice-utils libavahi-compat-libdnssd-dev
-
-# Download 'some' AltStore
-RUN curl -L https://cdn.altstore.io/file/altstore/apps/altstore/1_4_9.ipa > AltStore.ipa
-
-# Copy from build stage altserver
-COPY --from=altserver /buildenv/altserver/altserver .
-RUN chmod +x altserver
-
-# Copy from build stage netmuxd
-COPY --from=netmuxd /netmuxd/target/debug/netmuxd .
-RUN chmod +x netmuxd
-
-COPY entrypoint.sh .
-RUN chmod +x entrypoint.sh
-
-ENTRYPOINT [ "./entrypoint.sh" ]
+# RUN mkdir build && make && mv ./AltServer-`arch` ./altserver

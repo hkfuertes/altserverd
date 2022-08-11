@@ -8,6 +8,15 @@ services:
      command: sh -c "cargo build && cp target/debug/netmuxd /build/"
      volumes: 
       - .:/build
+
+  altserver:
+     container_name: altserver
+     build:
+      context: .
+      dockerfile: altserver.dockerfile
+     command: sh -c "mkdir build && make && cp /buildenv/altserver/AltServer-`arch` /build/altserver"
+     volumes: 
+      - .:/build
   
   config:
     build: .
@@ -24,9 +33,9 @@ services:
     environment:
       - CONFIG=true
 
-  altserver:
+  daemon:
     build: .
-    container_name: altserver
+    container_name: daemon
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - /var/lib/lockdown:/var/lib/lockdown
