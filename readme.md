@@ -11,11 +11,11 @@ docker-compose run config
 # Recomendation: First refresh via USB
 docker-compose up -d daemon
 
-# To build netmuxd (tags/v0.1.2)
+# To build netmuxd 
+# Latest commit to date: 315131a271961721189dd228bddfa863ba6376d2
 docker-compose run netmuxd
 
-# To build altserver
-# Latest commit to date: 315131a271961721189dd228bddfa863ba6376d2
+# To build altserver (tags/v0.0.5)
 docker-compose run altserver
 ```
 > You can use this repo with **[powenn/AltServer-Linux-ShellScript](https://github.com/powenn/AltServer-Linux-ShellScript)**. **@powenn** has implemented wifi refresh for *x86_64* but not for other platforms as [netmuxd](https://github.com/jkcoxson/netmuxd/releases) is not built by **@jkcoxson** for all the platforms. Using this repo and its dockerfile (see above) you can build **netmuxd** for your environment and use 
