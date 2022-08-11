@@ -26,6 +26,8 @@ services:
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - /var/lib/lockdown:/var/lib/lockdown
+      - /var/run:/var/run
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     stdin_open: true
     tty: true
