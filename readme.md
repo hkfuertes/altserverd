@@ -1,7 +1,7 @@
 ## AltServerd (AltServer Docker)
 Docker & docker-compose solutions for the combo [AltServer](https://github.com/NyaMisty/AltServer-Linux) and [netmuxd](https://github.com/jkcoxson/netmuxd). It provides an environment to build **netmuxd** and also an image/docker-compose to run everything in its own environment with all the dependencies met.
 
-### Run and build via Docker
+### Usage
 ```bash
 # To enter in "config" mode to pair a device with "usbmuxd"
 # Will run bash inside prepared environment
