@@ -20,7 +20,7 @@ docker-compose run altserver
 > You can use this repo with **[powenn/AltServer-Linux-ShellScript](https://github.com/powenn/AltServer-Linux-ShellScript)**. **@powenn** has implemented wifi refresh for *x86_64* but not for other platforms as [netmuxd](https://github.com/jkcoxson/netmuxd/releases) is not built by **@jkcoxson** for all the platforms. Using this repo and its dockerfile (see above) you can build **netmuxd** for your environment and use 
 [x64-run.sh](https://raw.githubusercontent.com/powenn/AltServer-Linux-ShellScript/main/x64-run.sh) script from @powenn repo to have wifi refresh.
 
-### Build via docker and run locally
+### Build via Docker and run locally
 Maybe building everything up could take lot of time. You can build one by one and run them locally.
 ```bash
 # Build netmuxd
