@@ -21,10 +21,13 @@ docker-compose run altserver
 [x64-run.sh](https://raw.githubusercontent.com/powenn/AltServer-Linux-ShellScript/main/x64-run.sh) script from @powenn repo to have wifi refresh.
 
 ### Build via docker and run locally
-Maybe building everything up could take lot of time. You can build and execute them locally.
+Maybe building everything up could take lot of time. You can build one by one and run them locally.
 ```bash
+# Build netmuxd
 docker-compose run netmuxd
+# Build altserver
 docker-compose run altserver
+# Start the daemon
 ./entrypoint.sh
 ```
 
