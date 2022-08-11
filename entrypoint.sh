@@ -8,5 +8,5 @@ else
     /etc/init.d/avahi-daemon start
     usbmuxd &
     ./netmuxd &>/dev/null &
-    ./AltServer
+    ./altServer
 fi
