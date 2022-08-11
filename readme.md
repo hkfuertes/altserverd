@@ -31,7 +31,7 @@ docker-compose run altserver
 ./entrypoint.sh
 ```
 
-#### DietPi Environment Preparation
+### DietPi Environment Preparation
 ```bash
 # docker, docker-compose, git, avahi-daemon
 dietpi-software install 162 134 17 152
