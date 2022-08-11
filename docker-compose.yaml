@@ -14,7 +14,7 @@ services:
      build:
       context: .
       dockerfile: altserver.dockerfile
-     command: sh -c "mkdir build && make && cp /buildenv/altserver/AltServer-`arch` /build/altserver"
+     command: sh -c "mkdir build && make && cp /buildenv/altserver/AltServer-* /build/altserver"
      volumes: 
       - .:/build
   
