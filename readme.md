@@ -11,10 +11,10 @@ docker-compose run config
 # Recomendation: First refresh via USB
 docker-compose up -d daemon
 
-# To build netmuxd
+# To build netmuxd (tags/v0.1.2)
 docker-compose run netmuxd
 
-# To build altserver
+# To build altserver (tags/v0.0.5)
 docker-compose run altserver
 ```
 > You can use this repo with **[powenn/AltServer-Linux-ShellScript](https://github.com/powenn/AltServer-Linux-ShellScript)**. **@powenn** has implemented wifi refresh for *x86_64* but not for other platforms as [netmuxd](https://github.com/jkcoxson/netmuxd/releases) is not built by **@jkcoxson** for all the platforms. Using this repo and its dockerfile (see above) you can build **netmuxd** for your environment and use 
@@ -39,6 +39,6 @@ sudo apt update; sudo apt install -y git docker-compose avahi-daemon
 ```
 
 ## Credits
-- https://github.com/NyaMisty/AltServer-Linux @NyaMisty - _(Using **tags/v0.0.5**)_
-- https://github.com/Dadoum/Provision @Dodaum _(Using **tags/v0.1.2**)_
+- https://github.com/NyaMisty/AltServer-Linux @NyaMisty
+- https://github.com/Dadoum/Provision @Dodaum
 - https://github.com/jkcoxson/netmuxd @jkcoxson
