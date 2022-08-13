@@ -44,5 +44,5 @@ You can use this repo with **[powenn/AltServer-Linux-ShellScript](https://github
 
 ## Credits
 - https://github.com/NyaMisty/AltServer-Linux @NyaMisty
-- https://github.com/Dadoum/Provision @Dodaum
+- https://github.com/Dadoum/Provision @Dadoum
 - https://github.com/jkcoxson/netmuxd @jkcoxson
