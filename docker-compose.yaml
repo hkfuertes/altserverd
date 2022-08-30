@@ -5,7 +5,7 @@ services:
      build:
       context: .
       dockerfile: docker/netmuxd.dockerfile
-     command: sh -c "[ ! -f /build/netmuxd ] && cargo build && cp target/debug/netmuxd /build/ && chmod +x /build/netmuxd || return 0"
+     command: sh -c "[ ! -f /build/netmuxd ] && cargo build --release --features zeroconf && cp target/debug/netmuxd /build/ && chmod +x /build/netmuxd || return 0"
      image: netmuxd:latest
      volumes: 
       - ./bin:/build
